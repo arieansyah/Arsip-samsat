@@ -97,7 +97,7 @@ function showDetail(id){
 
       success : function(data){
         $('#modal-detail').modal('show');
-        $('.title').text(data.no_reg);
+        $('.modal-title').text('Detail '+data.no_reg);
         $('.no_reg').text(': '+data.no_reg);
         $('.nama').text(': '+data.nama);
         $('.alamat').text(': '+data.alamat);
@@ -136,6 +136,22 @@ function editForm(id){
        alert("Tidak dapat menampilkan data!");
      }
    });
+}
+
+function deleteData(id){
+   if(confirm("Apakah yakin data akan dihapus?")){
+     $.ajax({
+       url : "arsip/"+id,
+       type : "POST",
+       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
+       success : function(data){
+         table.ajax.reload();
+       },
+       error : function(){
+         alert("Tidak dapat menghapus data!");
+       }
+     });
+   }
 }
 
 </script>

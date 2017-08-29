@@ -94,10 +94,7 @@ class DataArsipController extends Controller
      */
     public function show($id)
     {
-        $arsip = Arsip::find($id);
-        $getStart = $arsip->start;
-        $end = date('Y-m-d', strtotime('+1 year', strtotime($getStart)));
-        $oke = Carbon::parse($end)->format('d F Y');
+        $arsip = Arsip::find($id);        
         echo json_encode($arsip);
     }
 
@@ -140,8 +137,13 @@ class DataArsipController extends Controller
      * @param  \App\Arsip  $arsip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Arsip $arsip)
+    public function destroy($id)
     {
-        //
+        $arsip = Arsip::find($id);
+        $arsip->delete();
+    }
+
+    public function __construct(){
+        $this->middleware('auth');
     }
 }

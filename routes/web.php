@@ -12,7 +12,7 @@
 */
 
 
-
+Route::group(['middleware' => ['web']], function(){
 
 Auth::routes();
 
@@ -23,3 +23,5 @@ $this->get('logout', 'Auth\LoginController@logout');
 Route::resource('arsip', 'DataArsipController');
 Route::get('arsip/{id}/show', 'DataArsipController@show');
 Route::get('dataarsip', 'DataArsipController@listData')->name('dataarsip');
+
+});
