@@ -42,6 +42,7 @@
 @endsection
 
 @section('script')
+
 <script type="text/javascript">
 var table, save_method;
 $(function(){

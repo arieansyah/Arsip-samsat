@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Arsip;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use PDF;
 
 class DataArsipController extends Controller
 {
@@ -17,6 +18,23 @@ class DataArsipController extends Controller
     {
         
         return view('data-arsip.index');
+    }
+
+    public function printPdf(Request $request){
+        $dataarsip = array();
+        foreach ($request['oke'] as $status) {
+            $arsip = Arsip::where('status', '=', $status)->get();
+            $dataarsip[] = $arsip;
+        }
+        $no = 0;
+        $pdf = PDF::loadView('data-arsip.pdf', compact('arsip','dataarsip', 'no'));
+        $pdf->setPaper('a4', 'potrait');
+        $date = Carbon::now()->year;
+        return $pdf->stream('Arsip_'.$date.'.pdf');
+    }
+
+    public function cetak(){
+        return view('data-arsip.cetak');
     }
 
     public function listData()
@@ -80,6 +98,16 @@ class DataArsipController extends Controller
         $arsip->start = $request->start;
         $getStart = $arsip->start;
         $arsip->end = date('Y-m-d', strtotime('+1 year', strtotime($getStart)));
+        
+            $awal = starts_with($request->no_reg, 'H');
+            $end = ends_with($request->no_reg, ['A','P','H','S','F']);
+            if ($awal && $end == true) {
+                 $result = 'LOKAL';
+            }else{
+                 $result = 'ONLINE';
+            };
+
+        $arsip->status = $result;
         //dd($arsip);
         $arsip->save();
 

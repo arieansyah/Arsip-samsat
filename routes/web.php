@@ -14,14 +14,16 @@
 
 Route::group(['middleware' => ['web']], function(){
 
-Auth::routes();
+	Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/', 'HomeController@index')->name('home');
 
-$this->get('logout', 'Auth\LoginController@logout');
-//data-arsip
-Route::resource('arsip', 'DataArsipController');
-Route::get('arsip/{id}/show', 'DataArsipController@show');
-Route::get('dataarsip', 'DataArsipController@listData')->name('dataarsip');
+	$this->get('logout', 'Auth\LoginController@logout');
+	//data-arsip
+	Route::resource('arsip', 'DataArsipController');
+	Route::get('arsip/{id}/show', 'DataArsipController@show');
+	Route::get('dataarsip', 'DataArsipController@listData')->name('dataarsip');
+	Route::post('cetak/arsip','DataArsipController@printPdf');
+	Route::get('cetak','DataArsipController@cetak');
 
 });

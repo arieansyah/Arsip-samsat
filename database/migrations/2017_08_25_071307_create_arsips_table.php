@@ -21,6 +21,7 @@ class CreateArsipsTable extends Migration
             $table->date('masa_berlaku');
             $table->date('start');
             $table->date('end');
+            $table->string('status',10);
             $table->timestamps();
         });
     }

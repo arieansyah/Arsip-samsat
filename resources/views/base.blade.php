@@ -19,6 +19,8 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
+
   {{-- dataTables css --}}
   <link rel="stylesheet" type="text/css" href="plugins/datatables/dataTables.bootstrap.css">
 
@@ -83,7 +85,11 @@
             <i class="fa fa-table"></i> <span>Data Arsip</span>
           </a>
         </li>
-
+        <li class="treeview">
+          <a href="{{url('cetak')}}">
+            <i class="fa fa-print"></i> <span>Cetak Arsip</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
