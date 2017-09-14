@@ -50,16 +50,22 @@ class DataArsipController extends Controller
                 $result = '<span class="label label-primary">ONLINE</span>';
             };
 
+            if ($list->status_pmb == 'Denda'){
+                $pmb = '<span class="label label-danger">Denda</span>';
+            }else{
+                $pmb = '<span class="label label-success">Tidak Denda</span>';
+            }
+
             $getStart = $list->start;
             $end = date('Y-m-d', strtotime('+1 year', strtotime($getStart)));
 
             $row = array();
             $row[] = $list->no_reg;
             $row[] = $list->nama;
-            $row[] = $list->alamat;
             $row[] = Carbon::parse($list->masa_berlaku)->format('d F Y');
             $row[] = Carbon::parse($list->start)->format('d F Y');
             $row[] = $result;
+            $row[] = $pmb;
 
             $row[] = '<div class="btn-group">
                     <a onclick="showDetail('.$list->id.')" class="btn bg-aqua btn-sm"><i class="fa fa-eye"></i></a>
@@ -98,7 +104,7 @@ class DataArsipController extends Controller
         $arsip->start = $request->start;
         $getStart = $arsip->start;
         $arsip->end = date('Y-m-d', strtotime('+1 year', strtotime($getStart)));
-        
+        /*Status Id*/
             $awal = starts_with($request->no_reg, 'H');
             $end = ends_with($request->no_reg, ['A','P','H','S','F']);
             if ($awal && $end == true) {
@@ -106,8 +112,16 @@ class DataArsipController extends Controller
             }else{
                  $result = 'ONLINE';
             };
-
         $arsip->status = $result;
+        /*status pembayaran*/
+            $now = Carbon::now()->toDateString();
+            $masa_berlakux = Carbon::parse($request->masa_berlaku)->format('Y-m-d');         
+            if ($masa_berlakux < $now){
+                $pmb = 'Denda';
+            }else{
+                $pmb = 'Tidak Denda';
+            }
+        $arsip->status_pmb = $pmb;
         //dd($arsip);
         $arsip->save();
 
@@ -155,6 +169,24 @@ class DataArsipController extends Controller
         $arsip->start = $request->start;        
         $getStart = $arsip->start;
         $arsip->end = date('Y-m-d', strtotime('+1 year', strtotime($getStart)));
+        /*Status Id*/
+            $awal = starts_with($request->no_reg, 'H');
+            $end = ends_with($request->no_reg, ['A','P','H','S','F']);
+            if ($awal && $end == true) {
+                 $result = 'LOKAL';
+            }else{
+                 $result = 'ONLINE';
+            };
+        $arsip->status = $result;
+        /*status pembayaran*/
+            $now = Carbon::now()->toDateString();
+            $masa_berlakux = Carbon::parse($request->masa_berlaku)->format('Y-m-d');         
+            if ($masa_berlakux < $now){
+                $pmb = 'Denda';
+            }else{
+                $pmb = 'Tidak Denda';
+            }
+        $arsip->status_pmb = $pmb;
         //dd($arsip);
         $arsip->update();
     }

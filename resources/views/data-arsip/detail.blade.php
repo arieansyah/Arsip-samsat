@@ -57,6 +57,14 @@
                      <span class="end"></span>
                   </div>
             </div>
+            <div class="row">
+               <div class="col-md-3">
+                     Status
+               </div>
+                  <div class="col-md-9">
+                     <span class="status"></span>
+                  </div>
+            </div>
                <hr>
          </div>
       </div>

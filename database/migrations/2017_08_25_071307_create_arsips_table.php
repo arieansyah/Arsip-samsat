@@ -22,6 +22,7 @@ class CreateArsipsTable extends Migration
             $table->date('start');
             $table->date('end');
             $table->string('status',10);
+            $table->string('status_pmb',20);
             $table->timestamps();
         });
     }

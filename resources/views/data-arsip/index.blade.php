@@ -23,10 +23,10 @@
 		   <tr>
 		      <th>No.Registrasi</th>
 		      <th>Nama</th>
-		      <th>Alamat</th>
 		      <th>Masa Berlaku</th>
           <th>di Tetapkan</th>
 		      <th>Status</th>
+          <th>Status Pembayaran</th>
 		      <th>Aksi</th>
 		   </tr>
 		</thead>
@@ -105,6 +105,7 @@ function showDetail(id){
         $('.masa_berlaku').text(': '+data.masa_berlaku);
         $('.start').text(': '+data.start);
         $('.end').text(': '+data.end);
+        $('.status').text(data.status).addClass('label label-default');
       },
       error : function(){
        alert("Tidak dapat menampilkan data!");
