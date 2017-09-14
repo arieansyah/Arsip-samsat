@@ -106,6 +106,7 @@ function showDetail(id){
         $('.start').text(': '+data.start);
         $('.end').text(': '+data.end);
         $('.status').text(data.status).addClass('label label-default');
+        $('.status_pmb').text(data.status_pmb).addClass('label label-default');
       },
       error : function(){
        alert("Tidak dapat menampilkan data!");

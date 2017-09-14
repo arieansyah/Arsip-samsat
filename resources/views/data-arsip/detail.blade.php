@@ -65,6 +65,14 @@
                      <span class="status"></span>
                   </div>
             </div>
+            <div class="row">
+               <div class="col-md-3">
+                     Status Pembayaran
+               </div>
+                  <div class="col-md-9">
+                     <span class="status_pmb"></span>
+                  </div>
+            </div>
                <hr>
          </div>
       </div>
