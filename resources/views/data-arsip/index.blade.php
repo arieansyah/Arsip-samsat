@@ -156,6 +156,5 @@ function deleteData(id){
      });
    }
 }
-
 </script>
 @endsection

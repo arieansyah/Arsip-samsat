@@ -104,8 +104,7 @@
     <th>Alamat</th>
     <th>Masa Berlaku</th>
     <th>di Tetapkan</th>
-    <th>Berakhir</th>
-    <th>Status</th>
+    <th>Berakhir</th>    
     <th>Status Pembayaran</th>
    </tr>
    </thead>
@@ -121,16 +120,6 @@
         <td>{{ $col->masa_berlaku }}</td>
         <td>{{ $col->start }}</td>
         <td>{{ $col->end }}</td>
-        <?php
-          $awal = starts_with($col->no_reg, 'H');
-          $end = ends_with($col->no_reg, ['A','P','H','S','F']);
-          if ($awal && $end == true) {
-              $result = 'LOKAL';
-          }else{
-              $result = 'ONLINE';
-          };
-        ?>
-        <td>{{ $result }}</td>
         <td>{{ $col->status_pmb }}</td>
       </tr>
       @endforeach

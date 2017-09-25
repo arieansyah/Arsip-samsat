@@ -35,6 +35,7 @@ class Arsip extends Model
 		return Carbon::parse($value)->format('d F Y');
 	}
 
+
 	public function setNoRegAttribute($value){
 		$this->attributes['no_reg'] = strtoupper($value);
 	}

@@ -25,5 +25,5 @@ Route::group(['middleware' => ['web']], function(){
 	Route::get('dataarsip', 'DataArsipController@listData')->name('dataarsip');
 	Route::post('cetak/arsip','DataArsipController@printPdf');
 	Route::get('cetak','DataArsipController@cetak');
-
+	Route::get('arsip/print/{id}','DataArsipController@printWidPdf');
 });

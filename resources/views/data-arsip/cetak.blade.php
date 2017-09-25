@@ -23,14 +23,14 @@
 		    <div class="col-md-2">
 			    <div class="checkbox">
 					<label>
-						<input type="checkbox" name='oke[]' value='ONLINE'> ONLINE
+						<input type="checkbox" name='oke[]' value='Denda'> Tunggakan
 					</label>
-			    </div>
-			</div>
-			<div class="col-md-2">
+		      	</div>	      
+		    </div>
+		    <div class="col-md-2">
 			    <div class="checkbox">
 					<label>
-						<input type="checkbox" name='oke[]' value='LOKAL'> LOKAL
+						<input type="checkbox" name='oke[]' value='Tidak Denda'> Tidak Tunggakan
 					</label>
 		      	</div>	      
 		    </div>
